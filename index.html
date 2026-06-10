@@ -1,118 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>El Prado Burguer</title>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Prado Burguer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-<img src="imagens/logo.png" class="logo">
-<h1>EL PRADO BURGUER</h1>
-<p>Hambúrgueres Artesanais Premium</p>
-</header>
+    <header>
+        <img src="imagens/logo.png" class="logo" alt="Logo El Prado">
+        <h1>EL PRADO BURGUER</h1>
+        <p>Hamburgueres Artesanais Premium</p>
+    </header>
 
-<section class="banner">
-<h2>🔥 O Melhor Burguer da Região 🔥</h2>
-<p>Peça agora pelo WhatsApp</p>
-</section>
+    <!-- Menu de Abas -->
+    <nav class="tabs">
+        <button class="tab-button" onclick="mostrarCategoria('lanches')">Lanches</button>
+        <button class="tab-button" onclick="mostrarCategoria('bebidas')">Bebidas</button>
+        <button class="tab-button" onclick="mostrarCategoria('combos')">Combos</button>
+        <button class="tab-button" onclick="mostrarCategoria('promocoes')">Promoções</button>
+    </nav>
 
-<h2 class="categoria">🍔 Hambúrgueres</h2>
+    <!-- Seção de Produtos por Categoria -->
+    <section id="lanches"
+        <section id="lanches" class="categoria ativa">
+        <div class="produtos">
 
-<section class="produtos">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500">
+                <h3>El Prado Burger</h3>
+                <p>Pão brioche, carne 180g, cheddar e bacon.</p>
+                <span>R$ 34,90</span>
+                <button onclick="adicionar('El Prado Burger',34.90)">Adicionar</button>
+            </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500">
-<h3>El Prado Burger</h3>
-<p>Pão brioche, carne 180g, cheddar e bacon.</p>
-<span>R$ 34,90</span>
-<button onclick="adicionar('El Prado Burger',34.90)">Adicionar</button>
-</div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500">
+                <h3>X Bacon Premium</h3>
+                <p>Duplo bacon crocante.</p>
+                <span>R$ 39,90</span>
+                <button onclick="adicionar('X Bacon Premium',39.90)">Adicionar</button>
+            </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500">
-<h3>X Bacon Premium</h3>
-<p>Duplo bacon crocante.</p>
-<span>R$ 39,90</span>
-<button onclick="adicionar('X Bacon Premium',39.90)">Adicionar</button>
-</div>
+        </div>
+    </section>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500">
-<h3>Double Smash</h3>
-<span>R$ 44,90</span>
-<button onclick="adicionar('Double Smash',44.90)">Adicionar</button>
-</div>
+    <section id="bebidas" class="categoria">
+        <div class="produtos">
 
-</section>
+            <div class="card">
+                <h3>Coca-Cola Lata</h3>
+                <span>R$ 6,00</span>
+                <button onclick="adicionar('Coca-Cola Lata',6)">Adicionar</button>
+            </div>
 
-<h2 class="categoria">🍟 Porções</h2>
+            <div class="card">
+                <h3>Guaraná Lata</h3>
+                <span>R$ 5,00</span>
+                <button onclick="adicionar('Guaraná Lata',5)">Adicionar</button>
+            </div>
 
-<section class="produtos">
+        </div>
+    </section>
 
-<div class="card">
-<h3>Batata Frita G</h3>
-<span>R$ 24,90</span>
-<button onclick="adicionar('Batata Frita G',24.90)">Adicionar</button>
-</div>
+    <section id="combos" class="categoria">
+        <div class="produtos">
 
-<div class="card">
-<h3>Onion Rings</h3>
-<span>R$ 22,90</span>
-<button onclick="adicionar('Onion Rings',22.90)">Adicionar</button>
-</div>
+            <div class="card">
+                <h3>Combo El Prado</h3>
+                <p>Burger + Batata + Refrigerante</p>
+                <span>R$ 49,90</span>
+                <button onclick="adicionar('Combo El Prado',49.90)">Adicionar</button>
+            </div>
 
-</section>
+            <div class="card">
+                <h3>Combo Double Smash</h3>
+                <p>Double Smash + Batata + Refrigerante</p>
+                <span>R$ 59,90</span>
+                <button onclick="adicionar('Combo Double Smash',59.90)">Adicionar</button>
+            </div>
 
-<h2 class="categoria">🥤 Bebidas</h2>
+        </div>
+    </section>
 
-<section class="produtos">
+    <section id="promocoes" class="categoria">
+        <div class="produtos">
 
-<div class="card">
-<h3>Coca-Cola Lata</h3>
-<span>R$ 6,00</span>
-<button onclick="adicionar('Coca-Cola Lata',6)">Adicionar</button>
-</div>
+            <div class="card destaque">
+                <h3>🔥 Promoção da Semana</h3>
+                <p>2 El Prado Burgers</p>
+                <span>R$ 59,90</span>
+                <button onclick="adicionar('Promoção 2 El Prado Burgers',59.90)">Adicionar</button>
+            </div>
 
-<div class="card">
-<h3>Guaraná Lata</h3>
-<span>R$ 5,00</span>
-<button onclick="adicionar('Guaraná Lata',5)">Adicionar</button>
-</div>
+        </div>
+    </section>
 
-</section>
+    <section class="checkout">
+        <h2>🛒 Carrinho</h2>
 
-<section class="checkout">
+        <ul id="lista"></ul>
 
-<h2>🛒 Carrinho</h2>
+        <h3 id="total">Total: R$ 0,00</h3>
 
-<ul id="lista"></ul>
+        <input type="text" id="nome" placeholder="Nome">
 
-<h3 id="total">Total: R$ 0,00</h3>
+        <input type="text" id="endereco" placeholder="Endereço">
 
-<input type="text" id="nome" placeholder="Nome">
+        <select id="pagamento">
+            <option>Pix</option>
+            <option>Crédito</option>
+            <option>Débito</option>
+            <option>Dinheiro</option>
+        </select>
 
-<input type="text" id="endereco" placeholder="Endereço">
+        <button onclick="enviarWhatsapp()">
+            Finalizar Pedido
+        </button>
+    </section>
 
-<select id="pagamento">
-<option>Pix</option>
-<option>Crédito</option>
-<option>Débito</option>
-<option>Dinheiro</option>
-</select>
-
-<button onclick="enviarWhatsapp()">
-Finalizar Pedido
-</button>
-
-</section>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
+    
