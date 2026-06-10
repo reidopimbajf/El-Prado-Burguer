@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Prado Hamburgueria Premium</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<img src="imagens/logo.png" class="logo">
+<h1>EL PRADO</h1>
+<p>Hamburgueria Premium</p>
+</header>
+<section class="produtos">
+<div class="card">
+<h2>El Prado Burger</h2>
+<p>Pão brioche, cheddar e bacon.</p>
+<span>R$ 34,90</span>
+<button onclick="adicionar('El Prado Burger',34.90)">
+Adicionar
+</button>
+</div>
+<div class="card">
+<h2>Combo El Prado</h2>
+<p>Burger + Batata + Refrigerante</p>
+<span>R$ 49,90</span>
+<button onclick="adicionar('Combo El Prado',49.90)">
+Adicionar
+</button>
+</div>
+</section>
+<section class="carrinho">
+<h2>Carrinho</h2>
+<ul id="lista"></ul>
+<h3 id="total">Total: R$ 0,00</h3>
+<button onclick="enviarWhatsapp()">
+Finalizar Pedido
+</button>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
