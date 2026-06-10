@@ -1,70 +1,137 @@
 let carrinho = [];
 let total = 0;
 
-function adicionar(produto, valor){
+// Adicionar produto ao carrinho
+function adicionar(produto, valor) {
 
-carrinho.push(produto);
+    carrinho.push({
+        nome: produto,
+        preco: valor
+    });
 
-total += valor;
+    total += valor;
 
-atualizar();
+    atualizarCarrinho();
 }
 
-function atualizar(){
+// Atualizar carrinho na tela
+function atualizarCarrinho() {
 
-const lista =
-document.getElementById("lista");
+    const lista = document.getElementById("lista");
 
-lista.innerHTML="";
+    lista.innerHTML = "";
 
-carrinho.forEach(item=>{
+    carrinho.forEach((item, index) => {
 
-lista.innerHTML += `<li>${item}</li>`;
+        lista.innerHTML += `
+            <li>
+                ${item.nome} - R$ ${item.preco.toFixed(2)}
+                <button onclick="remover(${index})">
+                    ❌
+                </button>
+            </li>
+        `;
+
+    });
+
+    document.getElementById("total").innerHTML =
+        `Total: R$ ${total.toFixed(2)}`;
+}
+
+// Remover item
+function remover(index) {
+
+    total -= carrinho[index].preco;
+
+    carrinho.splice(index, 1);
+
+    atualizarCarrinho();
+}
+
+// Trocar categoria
+function mostrarCategoria(categoria) {
+
+    const categorias =
+        document.querySelectorAll(".categoria");
+
+    categorias.forEach(secao => {
+
+        secao.classList.remove("ativa");
+
+    });
+
+    document
+        .getElementById(categoria)
+        .classList.add("ativa");
+}
+
+// Enviar pedido para WhatsApp
+function enviarWhatsapp() {
+
+    const nome =
+        document.getElementById("nome").value;
+
+    const endereco =
+        document.getElementById("endereco").value;
+
+    const pagamento =
+        document.getElementById("pagamento").value;
+
+    if (nome.trim() === "") {
+
+        alert("Informe seu nome.");
+
+        return;
+    }
+
+    if (endereco.trim() === "") {
+
+        alert("Informe seu endereço.");
+
+        return;
+    }
+
+    if (carrinho.length === 0) {
+
+        alert("Seu carrinho está vazio.");
+
+        return;
+    }
+
+    let mensagem =
+        `🍔 *EL PRADO BURGUER*%0A%0A`;
+
+    mensagem +=
+        `👤 Cliente: ${nome}%0A`;
+
+    mensagem +=
+        `📍 Endereço: ${endereco}%0A`;
+
+    mensagem +=
+        `💳 Pagamento: ${pagamento}%0A%0A`;
+
+    mensagem +=
+        `📦 *ITENS DO PEDIDO*%0A`;
+
+    carrinho.forEach(item => {
+
+        mensagem +=
+            `• ${item.nome} - R$ ${item.preco.toFixed(2)}%0A`;
+
+    });
+
+    mensagem +=
+        `%0A💰 *TOTAL: R$ ${total.toFixed(2)}*`;
+
+    window.open(
+        `https://wa.me/5511975342595?text=${mensagem}`,
+        "_blank"
+    );
+}
+
+// Abrir categoria padrão ao carregar
+document.addEventListener("DOMContentLoaded", () => {
+
+    mostrarCategoria("lanches");
 
 });
-
-document.getElementById("total")
-.innerHTML =
-`Total: R$ ${total.toFixed(2)}`;
-}
-
-function enviarWhatsapp(){
-
-const nome =
-document.getElementById("nome").value;
-
-const endereco =
-document.getElementById("endereco").value;
-
-const pagamento =
-document.getElementById("pagamento").value;
-
-let mensagem =
-`🍔 *PEDIDO EL PRADO BURGUER*%0A%0A`;
-
-mensagem +=
-`👤 Cliente: ${nome}%0A`;
-
-mensagem +=
-`📍 Endereço: ${endereco}%0A%0A`;
-
-mensagem +=
-`📦 Itens:%0A`;
-
-carrinho.forEach(item=>{
-
-mensagem += `- ${item}%0A`;
-
-});
-
-mensagem +=
-`%0A💰 Total: R$ ${total.toFixed(2)}`;
-
-mensagem +=
-`%0A💳 Pagamento: ${pagamento}`;
-
-window.open(
-`https://wa.me/5511975342595?text=${mensagem}`
-);
-
-}
