@@ -3,41 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Prado Hamburgueria Premium</title>
+
+<title>El Prado Burguer</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <header>
 <img src="imagens/logo.png" class="logo">
-<h1>EL PRADO</h1>
-<p>Hamburgueria Premium</p>
+<h1>EL PRADO BURGUER</h1>
+<p>Hambúrgueres Artesanais Premium</p>
 </header>
-<section class="produtos">
-<div class="card">
-<h2>El Prado Burger</h2>
-<p>Pão brioche, cheddar e bacon.</p>
-<span>R$ 34,90</span>
-<button onclick="adicionar('El Prado Burger',34.90)">
-Adicionar
-</button>
-</div>
-<div class="card">
-<h2>Combo El Prado</h2>
-<p>Burger + Batata + Refrigerante</p>
-<span>R$ 49,90</span>
-<button onclick="adicionar('Combo El Prado',49.90)">
-Adicionar
-</button>
-</div>
+
+<section class="banner">
+<h2>🔥 O Melhor Burguer da Região 🔥</h2>
+<p>Peça agora pelo WhatsApp</p>
 </section>
-<section class="carrinho">
-<h2>Carrinho</h2>
+
+<h2 class="categoria">🍔 Hambúrgueres</h2>
+
+<section class="produtos">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500">
+<h3>El Prado Burger</h3>
+<p>Pão brioche, carne 180g, cheddar e bacon.</p>
+<span>R$ 34,90</span>
+<button onclick="adicionar('El Prado Burger',34.90)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500">
+<h3>X Bacon Premium</h3>
+<p>Duplo bacon crocante.</p>
+<span>R$ 39,90</span>
+<button onclick="adicionar('X Bacon Premium',39.90)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500">
+<h3>Double Smash</h3>
+<span>R$ 44,90</span>
+<button onclick="adicionar('Double Smash',44.90)">Adicionar</button>
+</div>
+
+</section>
+
+<h2 class="categoria">🍟 Porções</h2>
+
+<section class="produtos">
+
+<div class="card">
+<h3>Batata Frita G</h3>
+<span>R$ 24,90</span>
+<button onclick="adicionar('Batata Frita G',24.90)">Adicionar</button>
+</div>
+
+<div class="card">
+<h3>Onion Rings</h3>
+<span>R$ 22,90</span>
+<button onclick="adicionar('Onion Rings',22.90)">Adicionar</button>
+</div>
+
+</section>
+
+<h2 class="categoria">🥤 Bebidas</h2>
+
+<section class="produtos">
+
+<div class="card">
+<h3>Coca-Cola Lata</h3>
+<span>R$ 6,00</span>
+<button onclick="adicionar('Coca-Cola Lata',6)">Adicionar</button>
+</div>
+
+<div class="card">
+<h3>Guaraná Lata</h3>
+<span>R$ 5,00</span>
+<button onclick="adicionar('Guaraná Lata',5)">Adicionar</button>
+</div>
+
+</section>
+
+<section class="checkout">
+
+<h2>🛒 Carrinho</h2>
+
 <ul id="lista"></ul>
+
 <h3 id="total">Total: R$ 0,00</h3>
+
+<input type="text" id="nome" placeholder="Nome">
+
+<input type="text" id="endereco" placeholder="Endereço">
+
+<select id="pagamento">
+<option>Pix</option>
+<option>Crédito</option>
+<option>Débito</option>
+<option>Dinheiro</option>
+</select>
+
 <button onclick="enviarWhatsapp()">
 Finalizar Pedido
 </button>
+
 </section>
+
 <script src="script.js"></script>
+
 </body>
 </html>
