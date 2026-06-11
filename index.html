@@ -1,127 +1,257 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Prado Burguer</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>El Prado Burguer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-    <header>
-        <img src="imagens/logo.png" class="logo" alt="Logo El Prado">
-        <h1>EL PRADO BURGUER</h1>
-        <p>Hamburgueres Artesanais Premium</p>
-    </header>
+<header class="header">
 
-    <!-- Menu de Abas -->
-    <nav class="tabs">
-        <button class="tab-button" onclick="mostrarCategoria('lanches')">Lanches</button>
-        <button class="tab-button" onclick="mostrarCategoria('bebidas')">Bebidas</button>
-        <button class="tab-button" onclick="mostrarCategoria('combos')">Combos</button>
-        <button class="tab-button" onclick="mostrarCategoria('promocoes')">Promoções</button>
-    </nav>
+<div class="logo-container">
 
-    <!-- Seção de Produtos por Categoria -->
-    <section id="lanches"
-        <section id="lanches" class="categoria ativa">
-        <div class="produtos">
+<img src="imagens/logo.png" class="logo">
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500">
-                <h3>El Prado Burger</h3>
-                <p>Pão brioche, carne 180g, cheddar e bacon.</p>
-                <span>R$ 34,90</span>
-                <button onclick="adicionar('El Prado Burger',34.90)">Adicionar</button>
-            </div>
+</div>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500">
-                <h3>X Bacon Premium</h3>
-                <p>Duplo bacon crocante.</p>
-                <span>R$ 39,90</span>
-                <button onclick="adicionar('X Bacon Premium',39.90)">Adicionar</button>
-            </div>
+<nav>
 
-        </div>
-    </section>
+<ul class="menu">
 
-    <section id="bebidas" class="categoria">
-        <div class="produtos">
+<li><a href="#inicio">Início</a></li>
+<li><a href="#historia">Nossa História</a></li>
+<li><a href="#cardapio">Cardápio</a></li>
+<li><a href="#promocoes">Promoções</a></li>
+<li><a href="#contato">Contato</a></li>
 
-            <div class="card">
-                <h3>Coca-Cola Lata</h3>
-                <span>R$ 6,00</span>
-                <button onclick="adicionar('Coca-Cola Lata',6)">Adicionar</button>
-            </div>
+</ul>
 
-            <div class="card">
-                <h3>Guaraná Lata</h3>
-                <span>R$ 5,00</span>
-                <button onclick="adicionar('Guaraná Lata',5)">Adicionar</button>
-            </div>
+</nav>
 
-        </div>
-    </section>
+</header>
 
-    <section id="combos" class="categoria">
-        <div class="produtos">
+<section id="inicio" class="hero">
 
-            <div class="card">
-                <h3>Combo El Prado</h3>
-                <p>Burger + Batata + Refrigerante</p>
-                <span>R$ 49,90</span>
-                <button onclick="adicionar('Combo El Prado',49.90)">Adicionar</button>
-            </div>
+<div class="overlay">
 
-            <div class="card">
-                <h3>Combo Double Smash</h3>
-                <p>Double Smash + Batata + Refrigerante</p>
-                <span>R$ 59,90</span>
-                <button onclick="adicionar('Combo Double Smash',59.90)">Adicionar</button>
-            </div>
+<h1>EL PRADO BURGUER</h1>
 
-        </div>
-    </section>
+<p>
+Hambúrgueres Artesanais Premium
+</p>
 
-    <section id="promocoes" class="categoria">
-        <div class="produtos">
+<div class="hero-buttons">
 
-            <div class="card destaque">
-                <h3>🔥 Promoção da Semana</h3>
-                <p>2 El Prado Burgers</p>
-                <span>R$ 59,90</span>
-                <button onclick="adicionar('Promoção 2 El Prado Burgers',59.90)">Adicionar</button>
-            </div>
+<a href="#cardapio" class="btn-gold">
+VER CARDÁPIO
+</a>
 
-        </div>
-    </section>
+<a href="https://wa.me/5511975342595"
+class="btn-whatsapp">
 
-    <section class="checkout">
-        <h2>🛒 Carrinho</h2>
+PEDIR AGORA
 
-        <ul id="lista"></ul>
+</a>
 
-        <h3 id="total">Total: R$ 0,00</h3>
+</div>
 
-        <input type="text" id="nome" placeholder="Nome">
+</div>
 
-        <input type="text" id="endereco" placeholder="Endereço">
+</section>
 
-        <select id="pagamento">
-            <option>Pix</option>
-            <option>Crédito</option>
-            <option>Débito</option>
-            <option>Dinheiro</option>
-        </select>
+<section id="historia" class="historia">
 
-        <button onclick="enviarWhatsapp()">
-            Finalizar Pedido
-        </button>
-    </section>
+<div class="historia-texto">
 
-    <script src="script.js"></script>
+<h2>Nossa História</h2>
+
+<p>
+
+A El Prado Burguer nasceu da paixão por hambúrgueres artesanais feitos com ingredientes selecionados e muito cuidado em cada detalhe.
+
+Nosso objetivo é oferecer uma experiência premium, com sabor marcante, atendimento de excelência e entrega rápida.
+
+</p>
+
+</div>
+
+<div class="historia-imagem">
+
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+
+</div>
+
+</section>
+
+<section id="cardapio" class="cardapio">
+
+<h2>Cardápio</h2>
+
+<div class="categorias">
+
+<a href="#burgers">🍔 Burgers</a>
+<a href="#porcoes">🍟 Porções</a>
+<a href="#bebidas">🥤 Bebidas</a>
+<a href="#combos">🔥 Combos</a>
+
+</div>
+
+</section>
+
+<section id="burgers" class="produtos">
+
+<h2>Burgers Artesanais</h2>
+
+<div class="cards">
+
+<div class="produto">
+
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+
+<h3>El Prado Burger</h3>
+
+<p>180g Angus, Cheddar e Bacon.</p>
+
+<span>R$ 34,90</span>
+
+<button>Adicionar</button>
+
+</div>
+
+<div class="produto">
+
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+
+<h3>X Bacon Premium</h3>
+
+<p>Duplo Bacon Artesanal.</p>
+
+<span>R$ 39,90</span>
+
+<button>Adicionar</button>
+
+</div>
+
+<div class="produto">
+
+<img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add">
+
+<h3>Double Smash</h3>
+
+<p>2 Smash Burgers + Cheddar.</p>
+
+<span>R$ 44,90</span>
+
+<button>Adicionar</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="promocoes" class="promocao">
+
+<div class="promocao-box">
+
+<h2>🔥 Promoção da Semana</h2>
+
+<p>
+
+2 El Prado Burgers
++
+Batata Grande
+
+</p>
+
+<h3>R$ 59,90</h3>
+
+</div>
+
+</section>
+
+<section class="depoimentos">
+
+<h2>O que nossos clientes dizem</h2>
+
+<div class="depoimentos-grid">
+
+<div class="depoimento">
+
+★★★★★
+
+<p>
+Melhor hambúrguer da região.
+</p>
+
+<strong>Lucas</strong>
+
+</div>
+
+<div class="depoimento">
+
+★★★★★
+
+<p>
+Entrega rápida e sabor incrível.
+</p>
+
+<strong>Fernanda</strong>
+
+</div>
+
+<div class="depoimento">
+
+★★★★★
+
+<p>
+Voltarei muitas vezes.
+</p>
+
+<strong>Carlos</strong>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contato" class="contato">
+
+<h2>Contato</h2>
+
+<p>📱 WhatsApp: (11) 97534-2595</p>
+
+<a href="https://wa.me/5511975342595"
+class="btn-whatsapp">
+
+FAZER PEDIDO
+
+</a>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 El Prado Burguer
+</p>
+
+</footer>
+
+<script src="app.js"></script>
 
 </body>
+
 </html>
-    
