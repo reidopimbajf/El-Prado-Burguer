@@ -251,7 +251,90 @@ FAZER PEDIDO
 </footer>
 
 <script src="app.js"></script>
+<div class="cart-floating" onclick="abrirCarrinho()">
+    🛒 <span id="cart-count">0</span> itens
+</div>
 
+<div class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+
+        <h2>Seu Pedido</h2>
+
+        <button onclick="fecharCarrinho()">
+            ✕
+        </button>
+
+    </div>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-footer">
+
+        <h3 id="cart-total">
+            Total: R$ 0,00
+        </h3>
+
+        <button class="checkout-btn" onclick="abrirCheckout()">
+            Finalizar Pedido
+        </button>
+
+    </div>
+
+</div>
+<div class="checkout-modal" id="checkoutModal">
+
+    <div class="checkout-content">
+
+        <h2>Finalizar Pedido</h2>
+
+        <input
+            type="text"
+            id="clienteNome"
+            placeholder="Seu nome">
+
+        <input
+            type="text"
+            id="clienteWhatsapp"
+            placeholder="WhatsApp">
+
+        <input
+            type="text"
+            id="clienteEndereco"
+            placeholder="Endereço">
+
+        <input
+            type="text"
+            id="clienteComplemento"
+            placeholder="Complemento">
+
+        <select id="formaPagamento">
+
+            <option>Pix</option>
+
+            <option>Crédito</option>
+
+            <option>Débito</option>
+
+            <option>Dinheiro</option>
+
+        </select>
+
+        <button onclick="enviarPedido()">
+            Enviar Pedido
+        </button>
+
+        <button
+            class="close-btn"
+            onclick="fecharCheckout()">
+
+            Fechar
+
+        </button>
+
+    </div>
+
+</div>
 </body>
 
 </html>
