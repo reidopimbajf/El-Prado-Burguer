@@ -9,6 +9,7 @@
 <title>El Prado Burguer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
@@ -17,25 +18,25 @@
 
 <body>
 
-<header class="header">
+<header>
 
-<div class="logo-container">
+<div class="logo-area">
 
-<img src="imagens/logo.png" class="logo">
+<img src="imagens/logo.png" alt="El Prado Burguer">
 
 </div>
 
 <nav>
 
-<ul class="menu">
+<a href="#inicio">Início</a>
 
-<li><a href="#inicio">Início</a></li>
-<li><a href="#historia">Nossa História</a></li>
-<li><a href="#cardapio">Cardápio</a></li>
-<li><a href="#promocoes">Promoções</a></li>
-<li><a href="#contato">Contato</a></li>
+<a href="#burgers">Burgers</a>
 
-</ul>
+<a href="#combos">Combos</a>
+
+<a href="#bebidas">Bebidas</a>
+
+<a href="#contato">Contato</a>
 
 </nav>
 
@@ -43,7 +44,7 @@
 
 <section id="inicio" class="hero">
 
-<div class="overlay">
+<div class="hero-content">
 
 <h1>EL PRADO BURGUER</h1>
 
@@ -51,109 +52,93 @@
 Hambúrgueres Artesanais Premium
 </p>
 
-<div class="hero-buttons">
-
-<a href="#cardapio" class="btn-gold">
-VER CARDÁPIO
-</a>
-
-<a href="https://wa.me/5511975342595"
-class="btn-whatsapp">
-
-PEDIR AGORA
-
+<a href="#burgers" class="btn-principal">
+Ver Cardápio
 </a>
 
 </div>
 
-</div>
-
 </section>
 
-<section id="historia" class="historia">
+<section class="categorias">
 
-<div class="historia-texto">
+<div class="categoria-card">
 
-<h2>Nossa História</h2>
+🍔
 
-<p>
-
-A El Prado Burguer nasceu da paixão por hambúrgueres artesanais feitos com ingredientes selecionados e muito cuidado em cada detalhe.
-
-Nosso objetivo é oferecer uma experiência premium, com sabor marcante, atendimento de excelência e entrega rápida.
-
-</p>
+<h3>Burgers</h3>
 
 </div>
 
-<div class="historia-imagem">
+<div class="categoria-card">
 
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+🔥
+
+<h3>Combos</h3>
 
 </div>
 
-</section>
+<div class="categoria-card">
 
-<section id="cardapio" class="cardapio">
+🥤
 
-<h2>Cardápio</h2>
-
-<div class="categorias">
-
-<a href="#burgers">🍔 Burgers</a>
-<a href="#porcoes">🍟 Porções</a>
-<a href="#bebidas">🥤 Bebidas</a>
-<a href="#combos">🔥 Combos</a>
+<h3>Bebidas</h3>
 
 </div>
 
 </section>
 
-<section id="burgers" class="produtos">
+<section id="burgers">
 
-<h2>Burgers Artesanais</h2>
+<h2>Nossos Burgers</h2>
 
-<div class="cards">
+<div class="produtos">
 
 <div class="produto">
 
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800">
 
 <h3>El Prado Burger</h3>
 
-<p>180g Angus, Cheddar e Bacon.</p>
+<p>180g Angus + Cheddar + Bacon</p>
 
 <span>R$ 34,90</span>
 
-<button>Adicionar</button>
+<button onclick="adicionarProduto('El Prado Burger',34.90)">
+Adicionar
+</button>
 
 </div>
 
 <div class="produto">
 
-<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=800">
 
 <h3>X Bacon Premium</h3>
 
-<p>Duplo Bacon Artesanal.</p>
+<p>Duplo Bacon Artesanal</p>
 
 <span>R$ 39,90</span>
 
-<button>Adicionar</button>
+<button onclick="adicionarProduto('X Bacon Premium',39.90)">
+Adicionar
+</button>
 
 </div>
 
 <div class="produto">
 
-<img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add">
+<img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800">
 
 <h3>Double Smash</h3>
 
-<p>2 Smash Burgers + Cheddar.</p>
+<p>2 carnes smash + cheddar</p>
 
 <span>R$ 44,90</span>
 
-<button>Adicionar</button>
+<button onclick="adicionarProduto('Double Smash',44.90)">
+Adicionar
+</button>
 
 </div>
 
@@ -161,65 +146,23 @@ Nosso objetivo é oferecer uma experiência premium, com sabor marcante, atendim
 
 </section>
 
-<section id="promocoes" class="promocao">
+<section id="combos">
 
-<div class="promocao-box">
+<h2>Combos</h2>
 
-<h2>🔥 Promoção da Semana</h2>
+<div class="produtos">
 
-<p>
+<div class="produto">
 
-2 El Prado Burgers
-+
-Batata Grande
+<h3>Combo El Prado</h3>
 
-</p>
+<p>Burger + Batata + Refri</p>
 
-<h3>R$ 59,90</h3>
+<span>R$ 49,90</span>
 
-</div>
-
-</section>
-
-<section class="depoimentos">
-
-<h2>O que nossos clientes dizem</h2>
-
-<div class="depoimentos-grid">
-
-<div class="depoimento">
-
-★★★★★
-
-<p>
-Melhor hambúrguer da região.
-</p>
-
-<strong>Lucas</strong>
-
-</div>
-
-<div class="depoimento">
-
-★★★★★
-
-<p>
-Entrega rápida e sabor incrível.
-</p>
-
-<strong>Fernanda</strong>
-
-</div>
-
-<div class="depoimento">
-
-★★★★★
-
-<p>
-Voltarei muitas vezes.
-</p>
-
-<strong>Carlos</strong>
+<button onclick="adicionarProduto('Combo El Prado',49.90)">
+Adicionar
+</button>
 
 </div>
 
@@ -227,114 +170,114 @@ Voltarei muitas vezes.
 
 </section>
 
-<section id="contato" class="contato">
+<section id="bebidas">
+
+<h2>Bebidas</h2>
+
+<div class="produtos">
+
+<div class="produto">
+
+<h3>Coca-Cola Lata</h3>
+
+<span>R$ 6,00</span>
+
+<button onclick="adicionarProduto('Coca-Cola Lata',6)">
+Adicionar
+</button>
+
+</div>
+
+<div class="produto">
+
+<h3>Guaraná Lata</h3>
+
+<span>R$ 6,00</span>
+
+<button onclick="adicionarProduto('Guaraná Lata',6)">
+Adicionar
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="cart-button" onclick="abrirCarrinho()">
+
+🛒 <span id="contador">0</span>
+
+</div>
+
+<div class="carrinho" id="carrinho">
+
+<div class="carrinho-topo">
+
+<h2>Seu Pedido</h2>
+
+<button onclick="fecharCarrinho()">✖</button>
+
+</div>
+
+<div id="listaCarrinho"></div>
+
+<div class="carrinho-footer">
+
+<h3 id="valorTotal">
+Total: R$ 0,00
+</h3>
+
+<button onclick="abrirCheckout()">
+Finalizar Pedido
+</button>
+
+</div>
+
+</div>
+
+<div id="checkout" class="checkout">
+
+<div class="checkout-box">
+
+<h2>Finalizar Pedido</h2>
+
+<input id="nome" placeholder="Seu Nome">
+
+<input id="telefone" placeholder="WhatsApp">
+
+<input id="endereco" placeholder="Endereço">
+
+<select id="pagamento">
+
+<option>Pix</option>
+
+<option>Crédito</option>
+
+<option>Débito</option>
+
+<option>Dinheiro</option>
+
+</select>
+
+<button onclick="enviarPedido()">
+Enviar para WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<section id="contato">
 
 <h2>Contato</h2>
 
-<p>📱 WhatsApp: (11) 97534-2595</p>
-
-<a href="https://wa.me/5511975342595"
-class="btn-whatsapp">
-
-FAZER PEDIDO
-
-</a>
+<p>WhatsApp: (11) 97534-2595</p>
 
 </section>
 
-<footer>
+<script src="script.js"></script>
 
-<p>
-© 2026 El Prado Burguer
-</p>
-
-</footer>
-
-<script src="app.js"></script>
-<div class="cart-floating" onclick="abrirCarrinho()">
-    🛒 <span id="cart-count">0</span> itens
-</div>
-
-<div class="cart-sidebar" id="cartSidebar">
-
-    <div class="cart-header">
-
-        <h2>Seu Pedido</h2>
-
-        <button onclick="fecharCarrinho()">
-            ✕
-        </button>
-
-    </div>
-
-    <div id="cart-items"></div>
-
-    <div class="cart-footer">
-
-        <h3 id="cart-total">
-            Total: R$ 0,00
-        </h3>
-
-        <button class="checkout-btn" onclick="abrirCheckout()">
-            Finalizar Pedido
-        </button>
-
-    </div>
-
-</div>
-<div class="checkout-modal" id="checkoutModal">
-
-    <div class="checkout-content">
-
-        <h2>Finalizar Pedido</h2>
-
-        <input
-            type="text"
-            id="clienteNome"
-            placeholder="Seu nome">
-
-        <input
-            type="text"
-            id="clienteWhatsapp"
-            placeholder="WhatsApp">
-
-        <input
-            type="text"
-            id="clienteEndereco"
-            placeholder="Endereço">
-
-        <input
-            type="text"
-            id="clienteComplemento"
-            placeholder="Complemento">
-
-        <select id="formaPagamento">
-
-            <option>Pix</option>
-
-            <option>Crédito</option>
-
-            <option>Débito</option>
-
-            <option>Dinheiro</option>
-
-        </select>
-
-        <button onclick="enviarPedido()">
-            Enviar Pedido
-        </button>
-
-        <button
-            class="close-btn"
-            onclick="fecharCheckout()">
-
-            Fechar
-
-        </button>
-
-    </div>
-
-</div>
 </body>
 
 </html>
