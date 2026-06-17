@@ -4,13 +4,17 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Cardápio | El Prado Burguer</title>
 
-<link rel="stylesheet" href="css/cardapio.css">
+<link rel="stylesheet"
+href="css/cardapio.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 </head>
 
@@ -18,21 +22,31 @@
 
 <header>
 
-<a href="index.html" class="voltar">
+<a href="index.html" class="btn-voltar">
+
 ← Voltar
+
 </a>
 
-<h2>EL PRADO BURGUER</h2>
+<h2>🍔 EL PRADO BURGUER</h2>
 
-<div class="cart-btn" onclick="abrirCarrinho()">
+<div
+class="cart-btn"
+onclick="abrirCarrinho()">
+
 🛒 <span id="contador">0</span>
+
 </div>
 
 </header>
 
+<!-- CATEGORIAS -->
+
 <section class="categorias">
 
-<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('todos')">
+Todos
+</button>
 
 <button onclick="filtrar('burger')">
 🍔 Burgers
@@ -52,13 +66,19 @@
 
 </section>
 
-<section id="produtos" class="produtos">
+<!-- PRODUTOS -->
+
+<section
+id="produtos"
+class="produtos">
 
 </section>
 
 <!-- MODAL PRODUTO -->
 
-<div id="modalProduto" class="modal">
+<div
+id="modalProduto"
+class="modal">
 
 <div class="modal-box">
 
@@ -75,36 +95,60 @@
 <h4>Adicionais</h4>
 
 <label>
-<input type="checkbox" value="Bacon Extra" data-preco="5">
- Bacon Extra (+R$5)
+
+<input
+type="checkbox"
+value="Bacon Extra"
+data-preco="5">
+
+Bacon Extra (+R$ 5)
+
 </label>
 
 <br>
 
 <label>
-<input type="checkbox" value="Cheddar Extra" data-preco="4">
- Cheddar Extra (+R$4)
+
+<input
+type="checkbox"
+value="Cheddar Extra"
+data-preco="4">
+
+Cheddar Extra (+R$ 4)
+
 </label>
 
 <br>
 
 <label>
-<input type="checkbox" value="Onion Rings" data-preco="6">
- Onion Rings (+R$6)
+
+<input
+type="checkbox"
+value="Onion Rings"
+data-preco="6">
+
+Onion Rings (+R$ 6)
+
 </label>
 
 <br>
 
 <label>
-<input type="checkbox" value="Molho Especial" data-preco="3">
- Molho Especial (+R$3)
+
+<input
+type="checkbox"
+value="Hambúrguer Extra"
+data-preco="12">
+
+Hambúrguer Extra (+R$ 12)
+
 </label>
 
 <br><br>
 
 <textarea
 id="observacao"
-placeholder="Observações do pedido">
+placeholder="Alguma observação para seu pedido?">
 </textarea>
 
 <div class="quantidade">
@@ -137,7 +181,9 @@ Adicionar ao Carrinho
 
 <!-- CARRINHO -->
 
-<div id="carrinho" class="carrinho">
+<div
+id="carrinho"
+class="carrinho">
 
 <div class="carrinho-topo">
 
@@ -160,7 +206,9 @@ Total: R$ 0,00
 </h3>
 
 <button onclick="abrirCheckout()">
+
 Finalizar Pedido
+
 </button>
 
 </div>
@@ -169,7 +217,9 @@ Finalizar Pedido
 
 <!-- CHECKOUT -->
 
-<div id="checkout" class="modal">
+<div
+id="checkout"
+class="modal">
 
 <div class="modal-box">
 
@@ -200,7 +250,7 @@ type="text"
 id="complemento"
 placeholder="Complemento">
 
-<h3>Pagamento</h3>
+<h3>Forma de Pagamento</h3>
 
 <select id="pagamento">
 
@@ -234,9 +284,9 @@ Dinheiro
 
 <option>Hipercard</option>
 
-<option>Discover</option>
-
 <option>Diners Club</option>
+
+<option>Discover</option>
 
 </select>
 
@@ -246,17 +296,23 @@ id="cupom"
 placeholder="Cupom de desconto">
 
 <button onclick="aplicarCupom()">
+
 Aplicar Cupom
+
 </button>
 
 <br><br>
 
 <h3 id="resumoTotal">
+
 Total: R$ 0,00
+
 </h3>
 
 <button onclick="enviarWhatsApp()">
+
 Enviar Pedido
+
 </button>
 
 </div>
