@@ -84,6 +84,46 @@ return;
 
 }
 
+const produto = if(produtoEditando){
+
+const index =
+produtos.findIndex(
+produto =>
+produto.id === produtoEditando
+);
+
+produtos[index] = {
+
+id: produtoEditando,
+
+nome,
+
+categoria,
+
+preco:Number(preco),
+
+descricao,
+
+imagem,
+
+destaque,
+
+promocao:
+document.getElementById("promocao")
+? document.getElementById("promocao").checked
+: false
+
+};
+
+produtoEditando = null;
+
+alert(
+"Produto atualizado!"
+);
+
+}
+else{
+
 const produto = {
 
 id: Date.now(),
@@ -98,20 +138,16 @@ descricao,
 
 imagem,
 
-destaque
+destaque,
+
+promocao:
+document.getElementById("promocao")
+? document.getElementById("promocao").checked
+: false
 
 };
 
 produtos.push(produto);
-
-localStorage.setItem(
-"produtos",
-JSON.stringify(produtos)
-);
-
-listarProdutos();
-
-limparFormulario();
 
 alert(
 "Produto cadastrado!"
