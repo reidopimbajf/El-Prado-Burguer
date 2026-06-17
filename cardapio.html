@@ -32,9 +32,7 @@
 
 <section class="categorias">
 
-<button onclick="filtrar('todos')">
-Todos
-</button>
+<button onclick="filtrar('todos')">Todos</button>
 
 <button onclick="filtrar('burger')">
 🍔 Burgers
@@ -44,12 +42,12 @@ Todos
 🔥 Combos
 </button>
 
-<button onclick="filtrar('bebida')">
-🥤 Bebidas
-</button>
-
 <button onclick="filtrar('porcao')">
 🍟 Porções
+</button>
+
+<button onclick="filtrar('bebida')">
+🥤 Bebidas
 </button>
 
 </section>
@@ -57,6 +55,8 @@ Todos
 <section id="produtos" class="produtos">
 
 </section>
+
+<!-- MODAL PRODUTO -->
 
 <div id="modalProduto" class="modal">
 
@@ -70,31 +70,41 @@ Todos
 
 <hr>
 
+<br>
+
 <h4>Adicionais</h4>
 
 <label>
 <input type="checkbox" value="Bacon Extra" data-preco="5">
-Bacon Extra (+R$5)
+ Bacon Extra (+R$5)
 </label>
+
+<br>
 
 <label>
 <input type="checkbox" value="Cheddar Extra" data-preco="4">
-Cheddar Extra (+R$4)
+ Cheddar Extra (+R$4)
 </label>
+
+<br>
 
 <label>
 <input type="checkbox" value="Onion Rings" data-preco="6">
-Onion Rings (+R$6)
+ Onion Rings (+R$6)
 </label>
+
+<br>
 
 <label>
 <input type="checkbox" value="Molho Especial" data-preco="3">
-Molho Especial (+R$3)
+ Molho Especial (+R$3)
 </label>
+
+<br><br>
 
 <textarea
 id="observacao"
-placeholder="Observações">
+placeholder="Observações do pedido">
 </textarea>
 
 <div class="quantidade">
@@ -113,7 +123,8 @@ placeholder="Observações">
 
 </div>
 
-<button class="btn-add"
+<button
+class="btn-add"
 onclick="adicionarCarrinho()">
 
 Adicionar ao Carrinho
@@ -123,6 +134,8 @@ Adicionar ao Carrinho
 </div>
 
 </div>
+
+<!-- CARRINHO -->
 
 <div id="carrinho" class="carrinho">
 
@@ -143,11 +156,107 @@ Adicionar ao Carrinho
 <div class="carrinho-footer">
 
 <h3 id="total">
-R$ 0,00
+Total: R$ 0,00
 </h3>
 
-<button onclick="finalizarPedido()">
+<button onclick="abrirCheckout()">
 Finalizar Pedido
+</button>
+
+</div>
+
+</div>
+
+<!-- CHECKOUT -->
+
+<div id="checkout" class="modal">
+
+<div class="modal-box">
+
+<h2>Finalizar Pedido</h2>
+
+<input
+type="text"
+id="nome"
+placeholder="Seu nome">
+
+<input
+type="text"
+id="telefone"
+placeholder="WhatsApp">
+
+<input
+type="text"
+id="cep"
+placeholder="CEP">
+
+<input
+type="text"
+id="endereco"
+placeholder="Rua e Número">
+
+<input
+type="text"
+id="complemento"
+placeholder="Complemento">
+
+<h3>Pagamento</h3>
+
+<select id="pagamento">
+
+<option value="Pix">
+PIX
+</option>
+
+<option value="Débito">
+Cartão Débito
+</option>
+
+<option value="Crédito">
+Cartão Crédito
+</option>
+
+<option value="Dinheiro">
+Dinheiro
+</option>
+
+</select>
+
+<select id="bandeira">
+
+<option>Visa</option>
+
+<option>Mastercard</option>
+
+<option>Elo</option>
+
+<option>American Express</option>
+
+<option>Hipercard</option>
+
+<option>Discover</option>
+
+<option>Diners Club</option>
+
+</select>
+
+<input
+type="text"
+id="cupom"
+placeholder="Cupom de desconto">
+
+<button onclick="aplicarCupom()">
+Aplicar Cupom
+</button>
+
+<br><br>
+
+<h3 id="resumoTotal">
+Total: R$ 0,00
+</h3>
+
+<button onclick="enviarWhatsApp()">
+Enviar Pedido
 </button>
 
 </div>
