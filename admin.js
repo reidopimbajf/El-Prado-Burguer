@@ -5,7 +5,9 @@ let produtos =
 JSON.parse(
 localStorage.getItem("produtos")
 ) || [];
+
 let produtoEditando = null;
+
 // LOGIN
 
 function login(){
@@ -48,7 +50,7 @@ location.reload();
 
 }
 
-// CADASTRAR
+// CADASTRAR / EDITAR
 
 function salvarProduto(){
 
@@ -66,8 +68,12 @@ document.getElementById("descricao").value;
 
 const imagem =
 document.getElementById("imagem").value;
+
 const destaque =
 document.getElementById("destaque").checked;
+
+const promocao =
+document.getElementById("promocao").checked;
 
 if(
 !nome ||
@@ -76,15 +82,13 @@ if(
 !imagem
 ){
 
-alert(
-"Preencha todos os campos."
-);
+alert("Preencha todos os campos.");
 
 return;
 
 }
 
-const produto = if(produtoEditando){
+if(produtoEditando){
 
 const index =
 produtos.findIndex(
@@ -108,18 +112,13 @@ imagem,
 
 destaque,
 
-promocao:
-document.getElementById("promocao")
-? document.getElementById("promocao").checked
-: false
+promocao
 
 };
 
-produtoEditando = null;
+alert("Produto atualizado!");
 
-alert(
-"Produto atualizado!"
-);
+produtoEditando = null;
 
 }
 else{
@@ -140,18 +139,24 @@ imagem,
 
 destaque,
 
-promocao:
-document.getElementById("promocao")
-? document.getElementById("promocao").checked
-: false
+promocao
 
 };
 
 produtos.push(produto);
 
-alert(
-"Produto cadastrado!"
+alert("Produto cadastrado!");
+
+}
+
+localStorage.setItem(
+"produtos",
+JSON.stringify(produtos)
 );
+
+listarProdutos();
+
+limparFormulario();
 
 }
 
@@ -179,13 +184,15 @@ lista.innerHTML += `
 <p class="preco">
 R$ ${produto.preco.toFixed(2)}
 </p>
+
 <p>
-
-${produto.destaque
-? "⭐ Em Destaque"
-: "—"}
-
+${produto.destaque ? "⭐ Em Destaque" : ""}
 </p>
+
+<p>
+${produto.promocao ? "🔥 Promoção" : ""}
+</p>
+
 <div class="acoes-produto">
 
 <button
@@ -213,7 +220,9 @@ Excluir
 });
 
 }
-//EDITAR
+
+// EDITAR
+
 function editarProduto(id){
 
 const produto =
@@ -221,6 +230,8 @@ produtos.find(
 produto =>
 produto.id === id
 );
+
+if(!produto) return;
 
 produtoEditando = id;
 
@@ -242,12 +253,8 @@ produto.imagem;
 document.getElementById("destaque").checked =
 produto.destaque || false;
 
-if(document.getElementById("promocao")){
-
 document.getElementById("promocao").checked =
 produto.promocao || false;
-
-}
 
 window.scrollTo({
 top:0,
@@ -291,14 +298,16 @@ function limparFormulario(){
 
 document.getElementById("nome").value = "";
 
+document.getElementById("categoria").value = "burger";
+
 document.getElementById("preco").value = "";
 
 document.getElementById("descricao").value = "";
 
 document.getElementById("imagem").value = "";
 
-document.getElementById(
-"destaque"
-).checked = false;
+document.getElementById("destaque").checked = false;
+
+document.getElementById("promocao").checked = false;
 
 }
