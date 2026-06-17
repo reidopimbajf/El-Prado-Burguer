@@ -1,1 +1,161 @@
-.
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cardápio | El Prado Burguer</title>
+
+<link rel="stylesheet" href="css/cardapio.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="voltar">
+← Voltar
+</a>
+
+<h2>EL PRADO BURGUER</h2>
+
+<div class="cart-btn" onclick="abrirCarrinho()">
+🛒 <span id="contador">0</span>
+</div>
+
+</header>
+
+<section class="categorias">
+
+<button onclick="filtrar('todos')">
+Todos
+</button>
+
+<button onclick="filtrar('burger')">
+🍔 Burgers
+</button>
+
+<button onclick="filtrar('combo')">
+🔥 Combos
+</button>
+
+<button onclick="filtrar('bebida')">
+🥤 Bebidas
+</button>
+
+<button onclick="filtrar('porcao')">
+🍟 Porções
+</button>
+
+</section>
+
+<section id="produtos" class="produtos">
+
+</section>
+
+<div id="modalProduto" class="modal">
+
+<div class="modal-box">
+
+<h2 id="produtoNome"></h2>
+
+<p id="produtoDescricao"></p>
+
+<h3 id="produtoPreco"></h3>
+
+<hr>
+
+<h4>Adicionais</h4>
+
+<label>
+<input type="checkbox" value="Bacon Extra" data-preco="5">
+Bacon Extra (+R$5)
+</label>
+
+<label>
+<input type="checkbox" value="Cheddar Extra" data-preco="4">
+Cheddar Extra (+R$4)
+</label>
+
+<label>
+<input type="checkbox" value="Onion Rings" data-preco="6">
+Onion Rings (+R$6)
+</label>
+
+<label>
+<input type="checkbox" value="Molho Especial" data-preco="3">
+Molho Especial (+R$3)
+</label>
+
+<textarea
+id="observacao"
+placeholder="Observações">
+</textarea>
+
+<div class="quantidade">
+
+<button onclick="alterarQtd(-1)">
+-
+</button>
+
+<span id="qtd">
+1
+</span>
+
+<button onclick="alterarQtd(1)">
++
+</button>
+
+</div>
+
+<button class="btn-add"
+onclick="adicionarCarrinho()">
+
+Adicionar ao Carrinho
+
+</button>
+
+</div>
+
+</div>
+
+<div id="carrinho" class="carrinho">
+
+<div class="carrinho-topo">
+
+<h2>Seu Pedido</h2>
+
+<button onclick="fecharCarrinho()">
+✖
+</button>
+
+</div>
+
+<div id="itensCarrinho">
+
+</div>
+
+<div class="carrinho-footer">
+
+<h3 id="total">
+R$ 0,00
+</h3>
+
+<button onclick="finalizarPedido()">
+Finalizar Pedido
+</button>
+
+</div>
+
+</div>
+
+<script src="js/cardapio.js"></script>
+
+</body>
+
+</html>
