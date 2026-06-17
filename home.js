@@ -2,60 +2,79 @@
 // HOME EL PRADO BURGUER
 // =========================
 
-function adicionarHome(
-    nome,
-    preco
-){
+let produtos =
+JSON.parse(
+localStorage.getItem("produtos")
+) || [];
 
-    let carrinho =
-    JSON.parse(
-        localStorage.getItem("carrinho")
-    ) || [];
+function carregarDestaques(){
 
-    carrinho.push({
+    const container =
+    document.getElementById(
+        "produtosDestaque"
+    );
 
-        nome: nome,
+    if(!container) return;
 
-        quantidade: 1,
+    container.innerHTML = "";
 
-        adicionais: [],
+    if(produtos.length === 0){
 
-        observacao: "",
+        container.innerHTML = `
 
-        preco: preco
+        <div class="produto">
+
+            <h3>
+            Nenhum produto cadastrado
+            </h3>
+
+            <p>
+            Utilize o painel Admin.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    produtos
+    .slice(0,3)
+    .forEach(produto => {
+
+        container.innerHTML += `
+
+        <div class="produto">
+
+            <img src="${produto.imagem}">
+
+            <h3>
+            ${produto.nome}
+            </h3>
+
+            <p>
+            ${produto.descricao}
+            </p>
+
+            <span>
+            R$ ${produto.preco.toFixed(2)}
+            </span>
+
+            <a
+            href="cardapio.html">
+
+            Ver Produto
+
+            </a>
+
+        </div>
+
+        `;
 
     });
 
-    localStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
-    );
-
-    atualizarContador();
-
-    alert(
-        "✅ Produto adicionado ao carrinho!"
-    );
-
 }
 
-function atualizarContador(){
-
-    const contador =
-    document.getElementById(
-        "contadorHome"
-    );
-
-    if(!contador) return;
-
-    let carrinho =
-    JSON.parse(
-        localStorage.getItem("carrinho")
-    ) || [];
-
-    contador.innerText =
-    carrinho.length;
-
-}
-
-atualizarContador();
+carregarDestaques();
