@@ -52,7 +52,6 @@ nav a:hover{
 
 .hero{
     height:100vh;
-
     background:
     linear-gradient(
         rgba(0,0,0,.65),
@@ -90,29 +89,33 @@ nav a:hover{
     font-weight:700;
 }
 
-/* CATEGORIAS */
+/* PROMOÇÃO */
 
-.categorias{
-    padding:80px 5%;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
-.categoria-card{
-    background:#181818;
-    border:1px solid #D4AF37;
-    width:220px;
+.promo-semana{
+    padding:80px 20px;
     text-align:center;
-    padding:30px;
-    border-radius:20px;
-    font-size:2rem;
-    transition:.3s;
+    background:#181818;
 }
 
-.categoria-card:hover{
-    transform:translateY(-10px);
+.promo-semana h2{
+    color:#D4AF37;
+    margin-bottom:15px;
+}
+
+.promo-semana h3{
+    margin-top:15px;
+    color:#D4AF37;
+}
+
+.promo-semana button{
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    background:#D4AF37;
+    color:black;
+    font-weight:700;
+    cursor:pointer;
 }
 
 /* SEÇÕES */
@@ -126,6 +129,7 @@ section h2{
 
 /* PRODUTOS */
 
+#mais-vendidos,
 #burgers,
 #combos,
 #bebidas{
@@ -184,6 +188,10 @@ section h2{
     cursor:pointer;
 }
 
+.destaque{
+    border:2px solid #D4AF37;
+}
+
 /* CARRINHO */
 
 .cart-button{
@@ -197,6 +205,7 @@ section h2{
     font-weight:700;
     cursor:pointer;
     z-index:999;
+    box-shadow:0 0 20px rgba(212,175,55,.4);
 }
 
 .carrinho{
@@ -230,6 +239,7 @@ section h2{
     border:none;
     color:white;
     font-size:22px;
+    cursor:pointer;
 }
 
 #listaCarrinho{
@@ -239,9 +249,19 @@ section h2{
 }
 
 .item-carrinho{
+    background:#1f1f1f;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
     display:flex;
     justify-content:space-between;
-    margin-bottom:15px;
+    gap:15px;
+}
+
+.item-carrinho small{
+    display:block;
+    margin-top:5px;
+    color:#ccc;
 }
 
 .carrinho-footer{
@@ -257,6 +277,20 @@ section h2{
     border-radius:10px;
     color:white;
     font-weight:700;
+    cursor:pointer;
+}
+
+/* QUANTIDADE */
+
+.item-carrinho button{
+    border:none;
+    padding:5px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.item-carrinho button:hover{
+    opacity:.9;
 }
 
 /* CHECKOUT */
@@ -279,13 +313,22 @@ section h2{
     border-radius:20px;
 }
 
+.checkout-box h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#D4AF37;
+}
+
 .checkout-box input,
-.checkout-box select{
+.checkout-box select,
+.checkout-box textarea{
     width:100%;
     padding:15px;
     margin-bottom:15px;
     border:none;
     border-radius:10px;
+    background:#222;
+    color:white;
 }
 
 .checkout-box button{
@@ -296,6 +339,7 @@ section h2{
     border-radius:10px;
     color:white;
     font-weight:700;
+    cursor:pointer;
 }
 
 /* CONTATO */
@@ -303,6 +347,55 @@ section h2{
 #contato{
     text-align:center;
     padding:100px 5%;
+}
+
+/* WHATSAPP */
+
+.whatsapp-float{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    background:#25D366;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:28px;
+    z-index:999;
+    box-shadow:0 0 20px rgba(37,211,102,.4);
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px solid #222;
+}
+
+footer h3{
+    color:#D4AF37;
+    margin-bottom:10px;
+}
+
+footer p{
+    margin-bottom:5px;
+}
+
+/* SCROLLBAR */
+
+#listaCarrinho::-webkit-scrollbar{
+    width:6px;
+}
+
+#listaCarrinho::-webkit-scrollbar-thumb{
+    background:#D4AF37;
+    border-radius:10px;
 }
 
 /* RESPONSIVO */
@@ -325,6 +418,32 @@ section h2{
 
     .carrinho{
         width:100%;
+    }
+
+    .produto img{
+        height:220px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero-content h1{
+        font-size:2.3rem;
+    }
+
+    .hero-content p{
+        font-size:1rem;
+    }
+
+    .cart-button{
+        right:10px;
+        bottom:10px;
+    }
+
+    .whatsapp-float{
+        left:10px;
+        bottom:10px;
     }
 
 }
