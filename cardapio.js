@@ -49,7 +49,8 @@ imagem:"https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800"
 // VARIÁVEIS
 // =============================
 
-let carrinho = [];
+let carrinho =
+carregarCarrinhoStorage();
 let produtoSelecionado = null;
 let quantidade = 1;
 let desconto = 0;
@@ -307,7 +308,7 @@ lista.innerHTML = "";
 let total = 0;
 
 carrinho.forEach(
-(item,index) => {
+(item,index) =>{
 
 total += item.preco;
 
@@ -358,7 +359,7 @@ document.getElementById(
 ).innerText =
 "Total: R$ " +
 total.toFixed(2);
-
+salvarCarrinho(carrinho);
 }
 
 // =============================
