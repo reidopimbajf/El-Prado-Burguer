@@ -580,7 +580,38 @@ mensagem +=
 "%0A💰 *TOTAL: R$ " +
 total.toFixed(2) +
 "*";
+// SALVAR PEDIDO
 
+let pedidos =
+JSON.parse(
+localStorage.getItem("pedidos")
+) || [];
+
+pedidos.push({
+
+id: Date.now(),
+
+cliente: nome,
+
+telefone: telefone,
+
+endereco: endereco,
+
+total: total,
+
+status: "Novo Pedido",
+
+data:
+new Date().toLocaleString(),
+
+itens: carrinho
+
+});
+
+localStorage.setItem(
+"pedidos",
+JSON.stringify(pedidos)
+);
 window.open(
 "https://wa.me/5511975342595?text=" +
 mensagem,
