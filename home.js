@@ -18,14 +18,20 @@ function carregarDestaques(){
 
     container.innerHTML = "";
 
-    if(produtos.length === 0){
+    const destaques =
+    produtos.filter(
+        produto =>
+        produto.destaque === true
+    );
+
+    if(destaques.length === 0){
 
         container.innerHTML = `
 
         <div class="produto">
 
             <h3>
-            Nenhum produto cadastrado
+            Nenhum destaque cadastrado
             </h3>
 
             <p>
@@ -40,9 +46,7 @@ function carregarDestaques(){
 
     }
 
-    produtos
-    .slice(0,3)
-    .forEach(produto => {
+    destaques.forEach(produto => {
 
         container.innerHTML += `
 
