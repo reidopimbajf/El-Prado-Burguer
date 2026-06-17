@@ -25,22 +25,29 @@ align-items:center;
 
 .login-box{
 
-width:400px;
-
 background:#181818;
 
-padding:30px;
+width:400px;
+
+padding:40px;
 
 border-radius:20px;
-}
-
-.login-box h2{
 
 text-align:center;
+}
+
+.login-box h1{
 
 color:#D4AF37;
 
-margin-bottom:20px;
+margin-bottom:10px;
+}
+
+.login-box p{
+
+margin-bottom:25px;
+
+color:#ccc;
 }
 
 .login-box input{
@@ -77,37 +84,68 @@ font-weight:700;
 cursor:pointer;
 }
 
-/* PAINEL */
+/* HEADER */
 
 header{
+
+background:#111;
+
+padding:20px;
 
 display:flex;
 
 justify-content:space-between;
 
 align-items:center;
-
-padding:20px;
-
-background:#111;
 }
 
-header button{
+header h2{
 
-padding:10px 20px;
+color:#D4AF37;
+}
 
-background:red;
+.btn-home{
+
+background:#25D366;
 
 border:none;
 
-color:white;
+padding:10px 20px;
 
 border-radius:10px;
+
+color:white;
+
+cursor:pointer;
+
+margin-right:10px;
 }
+
+.btn-sair{
+
+background:#ff4444;
+
+border:none;
+
+padding:10px 20px;
+
+border-radius:10px;
+
+color:white;
+
+cursor:pointer;
+}
+
+/* FORM */
 
 .cadastro{
 
 padding:30px;
+}
+
+.cadastro h3{
+
+margin-bottom:20px;
 }
 
 .cadastro input,
@@ -128,7 +166,7 @@ background:#222;
 color:white;
 }
 
-.cadastro button{
+.btn-salvar{
 
 width:100%;
 
@@ -138,16 +176,28 @@ border:none;
 
 border-radius:10px;
 
-background:#25D366;
-
-color:white;
+background:#D4AF37;
 
 font-weight:700;
+
+cursor:pointer;
+}
+
+/* PRODUTOS */
+
+.produtos-admin{
+
+padding:30px;
 }
 
 #listaProdutos{
 
-padding:30px;
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:20px;
 }
 
 .produto-admin{
@@ -156,22 +206,54 @@ background:#181818;
 
 padding:20px;
 
+border-radius:20px;
+}
+
+.produto-admin img{
+
+width:100%;
+
+height:180px;
+
+object-fit:cover;
+
 border-radius:15px;
 
 margin-bottom:15px;
 }
 
+.produto-admin h4{
+
+margin-bottom:10px;
+}
+
+.produto-admin p{
+
+margin-bottom:10px;
+
+color:#ccc;
+}
+
+.produto-admin .preco{
+
+color:#D4AF37;
+
+font-size:1.2rem;
+
+font-weight:700;
+}
+
 .produto-admin button{
 
-margin-top:10px;
+width:100%;
 
-padding:10px;
+padding:12px;
 
 border:none;
 
 border-radius:10px;
 
-background:red;
+background:#ff4444;
 
 color:white;
 
