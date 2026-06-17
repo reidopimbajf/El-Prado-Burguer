@@ -135,6 +135,8 @@ if(categoria === "todos"){
 
 carregarProdutos(produtos);
 
+atualizarCarrinho();
+
 return;
 
 }
