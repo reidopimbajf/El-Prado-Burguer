@@ -259,3 +259,62 @@ color:white;
 
 cursor:pointer;
 }
+.pedido-card{
+
+background:#181818;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+
+}
+
+.pedido-card h3{
+
+color:#D4AF37;
+margin-bottom:10px;
+
+}
+
+.pedido-card p{
+
+margin:8px 0;
+
+}
+
+.pedido-card button{
+
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#25D366;
+color:white;
+font-weight:700;
+cursor:pointer;
+
+}
+
+.cards-dashboard{
+
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+
+}
+
+.card-dashboard{
+
+background:#181818;
+padding:25px;
+border-radius:20px;
+text-align:center;
+
+}
+
+.card-dashboard h3{
+
+font-size:2rem;
+color:#D4AF37;
+
+}
