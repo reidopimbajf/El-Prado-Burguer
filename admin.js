@@ -66,6 +66,8 @@ document.getElementById("descricao").value;
 
 const imagem =
 document.getElementById("imagem").value;
+const destaque =
+document.getElementById("destaque").checked;
 
 if(
 !nome ||
@@ -94,7 +96,9 @@ preco:Number(preco),
 
 descricao,
 
-imagem
+imagem,
+
+destaque
 
 };
 
@@ -139,7 +143,13 @@ lista.innerHTML += `
 <p class="preco">
 R$ ${produto.preco.toFixed(2)}
 </p>
+<p>
 
+${produto.destaque
+? "⭐ Em Destaque"
+: "—"}
+
+</p>
 <button
 onclick="excluirProduto(${produto.id})">
 
@@ -195,5 +205,9 @@ document.getElementById("preco").value = "";
 document.getElementById("descricao").value = "";
 
 document.getElementById("imagem").value = "";
+
+document.getElementById(
+"destaque"
+).checked = false;
 
 }
