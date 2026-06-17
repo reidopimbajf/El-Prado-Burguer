@@ -311,3 +311,18 @@ document.getElementById("destaque").checked = false;
 document.getElementById("promocao").checked = false;
 
 }
+function mostrarSecao(secao){
+
+document
+.querySelectorAll(".secao-admin")
+.forEach(item => {
+
+item.style.display = "none";
+
+});
+
+document
+.getElementById(secao)
+.style.display = "block";
+
+}
