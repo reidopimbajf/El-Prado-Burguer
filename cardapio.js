@@ -1,64 +1,68 @@
+// =========================
 // PRODUTOS
+// =========================
 
 const produtos = [
 
 {
-    id:1,
-    nome:"El Prado Burger",
-    categoria:"burger",
-    descricao:"180g Angus + Cheddar + Bacon",
-    preco:34.90,
-    imagem:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"
+id:1,
+nome:"El Prado Burger",
+categoria:"burger",
+descricao:"180g Angus + Cheddar + Bacon",
+preco:34.90,
+imagem:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"
 },
 
 {
-    id:2,
-    nome:"X Bacon Premium",
-    categoria:"burger",
-    descricao:"Duplo Bacon Artesanal",
-    preco:39.90,
-    imagem:"https://images.unsplash.com/photo-1550547660-d9450f859349?w=800"
+id:2,
+nome:"X Bacon Premium",
+categoria:"burger",
+descricao:"Duplo Bacon Artesanal",
+preco:39.90,
+imagem:"https://images.unsplash.com/photo-1550547660-d9450f859349?w=800"
 },
 
 {
-    id:3,
-    nome:"Double Smash",
-    categoria:"burger",
-    descricao:"2 Smash + Cheddar",
-    preco:44.90,
-    imagem:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800"
+id:3,
+nome:"Double Smash",
+categoria:"burger",
+descricao:"2 Smash + Cheddar",
+preco:44.90,
+imagem:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800"
 },
 
 {
-    id:4,
-    nome:"Combo Casal",
-    categoria:"combo",
-    descricao:"2 Burgers + 2 Batatas + 2 Refrigerantes",
-    preco:89.90,
-    imagem:"https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800"
+id:4,
+nome:"Combo Casal",
+categoria:"combo",
+descricao:"2 Burgers + 2 Batatas + 2 Refrigerantes",
+preco:89.90,
+imagem:"https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800"
 },
 
 {
-    id:5,
-    nome:"Batata Especial",
-    categoria:"porcao",
-    descricao:"Batata Crocante",
-    preco:19.90,
-    imagem:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"
+id:5,
+nome:"Batata Especial",
+categoria:"porcao",
+descricao:"Batata Crocante",
+preco:19.90,
+imagem:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"
 },
 
 {
-    id:6,
-    nome:"Coca-Cola Lata",
-    categoria:"bebida",
-    descricao:"350ml",
-    preco:6,
-    imagem:"https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=800"
+id:6,
+nome:"Coca-Cola Lata",
+categoria:"bebida",
+descricao:"350ml",
+preco:6.00,
+imagem:"https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=800"
 }
 
 ];
 
-// CARRINHO
+// =========================
+// VARIÁVEIS
+// =========================
 
 let carrinho = [];
 
@@ -66,342 +70,475 @@ let produtoSelecionado = null;
 
 let quantidade = 1;
 
+let desconto = 0;
+
+// =========================
 // CARREGAR PRODUTOS
+// =========================
 
 function carregarProdutos(lista){
 
-    const container =
-    document.getElementById("produtos");
+const container =
+document.getElementById("produtos");
 
-    container.innerHTML = "";
+container.innerHTML = "";
 
-    lista.forEach(produto => {
+lista.forEach(produto => {
 
-        container.innerHTML += `
+container.innerHTML += `
 
-        <div class="produto">
+<div class="produto">
 
-            <img src="${produto.imagem}">
+<img src="${produto.imagem}">
 
-            <div class="produto-info">
+<div class="produto-info">
 
-                <h3>${produto.nome}</h3>
+<h3>${produto.nome}</h3>
 
-                <p>${produto.descricao}</p>
+<p>${produto.descricao}</p>
 
-                <span>
-                R$ ${produto.preco.toFixed(2)}
-                </span>
+<span>
+R$ ${produto.preco.toFixed(2)}
+</span>
 
-                <button
-                onclick="abrirProduto(${produto.id})">
+<button onclick="abrirProduto(${produto.id})">
+Adicionar
+</button>
 
-                Adicionar
+</div>
 
-                </button>
+</div>
 
-            </div>
+`;
 
-        </div>
-
-        `;
-
-    });
+});
 
 }
 
+// =========================
 // FILTRO
+// =========================
 
 function filtrar(categoria){
 
-    if(categoria === "todos"){
+if(categoria === "todos"){
 
-        carregarProdutos(produtos);
-
-        return;
-
-    }
-
-    const filtrados =
-    produtos.filter(
-    produto =>
-    produto.categoria === categoria
-    );
-
-    carregarProdutos(filtrados);
+carregarProdutos(produtos);
+return;
 
 }
 
+const filtrados =
+produtos.filter(
+produto => produto.categoria === categoria
+);
+
+carregarProdutos(filtrados);
+
+}
+
+// =========================
 // ABRIR PRODUTO
+// =========================
 
 function abrirProduto(id){
 
-    produtoSelecionado =
-    produtos.find(
-    produto =>
-    produto.id === id
-    );
+produtoSelecionado =
+produtos.find(
+produto => produto.id === id
+);
 
-    quantidade = 1;
+quantidade = 1;
 
-    document.getElementById(
-    "produtoNome"
-    ).innerText =
-    produtoSelecionado.nome;
+document.getElementById("produtoNome").innerText =
+produtoSelecionado.nome;
 
-    document.getElementById(
-    "produtoDescricao"
-    ).innerText =
-    produtoSelecionado.descricao;
+document.getElementById("produtoDescricao").innerText =
+produtoSelecionado.descricao;
 
-    document.getElementById(
-    "produtoPreco"
-    ).innerText =
-    "R$ " +
-    produtoSelecionado.preco.toFixed(2);
+document.getElementById("produtoPreco").innerText =
+"R$ " + produtoSelecionado.preco.toFixed(2);
 
-    document.getElementById(
-    "qtd"
-    ).innerText =
-    quantidade;
+document.getElementById("qtd").innerText =
+quantidade;
 
-    document
-    .getElementById("modalProduto")
-    .style.display = "flex";
+document.getElementById("modalProduto")
+.style.display = "flex";
 
 }
 
+// =========================
 // QUANTIDADE
+// =========================
 
 function alterarQtd(valor){
 
-    quantidade += valor;
+quantidade += valor;
 
-    if(quantidade < 1){
+if(quantidade < 1){
 
-        quantidade = 1;
-
-    }
-
-    document.getElementById(
-    "qtd"
-    ).innerText =
-    quantidade;
+quantidade = 1;
 
 }
 
-// ADICIONAR CARRINHO
+document.getElementById("qtd").innerText =
+quantidade;
+
+}
+
+// =========================
+// ADICIONAR AO CARRINHO
+// =========================
 
 function adicionarCarrinho(){
 
-    let adicionais = [];
+let adicionais = [];
 
-    let valorExtra = 0;
+let valorExtra = 0;
 
-    document
-    .querySelectorAll(
-    "#modalProduto input[type='checkbox']:checked"
-    )
-    .forEach(item => {
+document
+.querySelectorAll(
+"#modalProduto input[type='checkbox']:checked"
+)
+.forEach(item => {
 
-        adicionais.push(
-        item.value
-        );
+adicionais.push(item.value);
 
-        valorExtra +=
-        Number(
-        item.dataset.preco
-        );
+valorExtra += Number(item.dataset.preco);
 
-    });
+});
 
-    const observacao =
-    document.getElementById(
-    "observacao"
-    ).value;
+const observacao =
+document.getElementById("observacao").value;
 
-    carrinho.push({
+carrinho.push({
 
-        nome:
-        produtoSelecionado.nome,
+nome: produtoSelecionado.nome,
 
-        preco:
-        (
-            produtoSelecionado.preco
-            +
-            valorExtra
-        ) * quantidade,
+quantidade: quantidade,
 
-        quantidade,
+adicionais: adicionais,
 
-        adicionais,
+observacao: observacao,
 
-        observacao
+preco:
+(produtoSelecionado.preco + valorExtra)
+* quantidade
 
-    });
+});
 
-    atualizarCarrinho();
+document.getElementById("modalProduto")
+.style.display = "none";
 
-    document
-    .getElementById("modalProduto")
-    .style.display = "none";
+document
+.querySelectorAll(
+"#modalProduto input[type='checkbox']"
+)
+.forEach(item => item.checked = false);
+
+document.getElementById("observacao").value = "";
+
+atualizarCarrinho();
 
 }
 
+// =========================
+// REMOVER ITEM
+// =========================
+
+function removerItem(index){
+
+carrinho.splice(index,1);
+
+atualizarCarrinho();
+
+}
+
+// =========================
 // ATUALIZAR CARRINHO
+// =========================
 
 function atualizarCarrinho(){
 
-    const lista =
-    document.getElementById(
-    "itensCarrinho"
-    );
+const lista =
+document.getElementById("itensCarrinho");
 
-    lista.innerHTML = "";
+lista.innerHTML = "";
 
-    let total = 0;
+let total = 0;
 
-    carrinho.forEach(item => {
+carrinho.forEach((item,index)=>{
 
-        total += item.preco;
+total += item.preco;
 
-        lista.innerHTML += `
+lista.innerHTML += `
 
-        <div class="item-carrinho">
+<div class="item-carrinho">
 
-            <h4>
-            ${item.nome}
-            </h4>
+<h4>${item.nome}</h4>
 
-            <small>
-            Qtd: ${item.quantidade}
-            </small>
+<small>
+Qtd: ${item.quantidade}
+</small>
 
-            <small>
-            ${item.adicionais.join(", ")}
-            </small>
+<small>
+${item.adicionais.join(", ")}
+</small>
 
-            <small>
-            ${item.observacao}
-            </small>
+<small>
+${item.observacao}
+</small>
 
-            <div class="preco">
+<div class="preco">
 
-            R$ ${item.preco.toFixed(2)}
+R$ ${item.preco.toFixed(2)}
 
-            </div>
+</div>
 
-        </div>
+<button
+onclick="removerItem(${index})"
+style="
+margin-top:10px;
+width:100%;
+padding:10px;
+background:#ff4444;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+">
 
-        `;
+Remover
 
-    });
+</button>
 
-    document.getElementById(
-    "contador"
-    ).innerText =
-    carrinho.length;
+</div>
 
-    document.getElementById(
-    "total"
-    ).innerText =
-    "Total: R$ " +
-    total.toFixed(2);
+`;
+
+});
+
+document.getElementById("contador").innerText =
+carrinho.length;
+
+document.getElementById("total").innerText =
+"Total: R$ " + total.toFixed(2);
 
 }
 
+// =========================
 // CARRINHO
+// =========================
 
 function abrirCarrinho(){
 
-    document
-    .getElementById("carrinho")
-    .classList.add("ativo");
+document
+.getElementById("carrinho")
+.classList.add("ativo");
 
 }
 
 function fecharCarrinho(){
 
-    document
-    .getElementById("carrinho")
-    .classList.remove("ativo");
+document
+.getElementById("carrinho")
+.classList.remove("ativo");
 
 }
 
-// FINALIZAR
+// =========================
+// CUPOM
+// =========================
 
-function finalizarPedido(){
+function aplicarCupom(){
 
-    if(carrinho.length === 0){
+const cupom =
+document.getElementById("cupom")
+.value
+.toUpperCase();
 
-        alert(
-        "Seu carrinho está vazio."
-        );
+if(cupom === "PRADO10"){
 
-        return;
+desconto = 10;
 
-    }
+alert("Cupom aplicado!");
 
-    let total = 0;
+}
+else{
 
-    let mensagem =
-    "🍔 *EL PRADO BURGUER*%0A%0A";
-
-    mensagem +=
-    "📦 *PEDIDO*%0A";
-
-    carrinho.forEach(item => {
-
-        total += item.preco;
-
-        mensagem +=
-
-        "• " +
-        item.nome +
-
-        " | Qtd: " +
-        item.quantidade +
-
-        " | R$ " +
-        item.preco.toFixed(2) +
-
-        "%0A";
-
-        if(item.adicionais.length){
-
-            mensagem +=
-            "Adicionais: " +
-            item.adicionais.join(", ")
-            + "%0A";
-
-        }
-
-        if(item.observacao){
-
-            mensagem +=
-            "Obs: " +
-            item.observacao
-            + "%0A";
-
-        }
-
-        mensagem += "%0A";
-
-    });
-
-    mensagem +=
-
-    "💰 TOTAL: R$ " +
-    total.toFixed(2);
-
-    window.open(
-    "https://wa.me/5511975342595?text="
-    + mensagem,
-    "_blank"
-    );
+alert("Cupom inválido.");
 
 }
 
+}
+
+// =========================
+// CHECKOUT
+// =========================
+
+function abrirCheckout(){
+
+let total = 0;
+
+carrinho.forEach(item => {
+
+total += item.preco;
+
+});
+
+if(desconto > 0){
+
+total =
+total -
+(total * desconto / 100);
+
+}
+
+document.getElementById("resumoTotal")
+.innerText =
+"Total: R$ " + total.toFixed(2);
+
+document.getElementById("checkout")
+.style.display = "flex";
+
+}
+
+// =========================
+// WHATSAPP
+// =========================
+
+function enviarWhatsApp(){
+
+const nome =
+document.getElementById("nome").value;
+
+const telefone =
+document.getElementById("telefone").value;
+
+const cep =
+document.getElementById("cep").value;
+
+const endereco =
+document.getElementById("endereco").value;
+
+const complemento =
+document.getElementById("complemento").value;
+
+const pagamento =
+document.getElementById("pagamento").value;
+
+const bandeira =
+document.getElementById("bandeira").value;
+
+let total = 0;
+
+let mensagem =
+"🍔 *EL PRADO BURGUER*%0A%0A";
+
+mensagem +=
+"👤 Cliente: " + nome + "%0A";
+
+mensagem +=
+"📱 WhatsApp: " + telefone + "%0A";
+
+mensagem +=
+"📍 CEP: " + cep + "%0A";
+
+mensagem +=
+"🏠 Endereço: " + endereco + "%0A";
+
+mensagem +=
+"📌 Complemento: " + complemento + "%0A%0A";
+
+mensagem +=
+"💳 Pagamento: " + pagamento + "%0A";
+
+if(
+pagamento === "Crédito" ||
+pagamento === "Débito"
+){
+
+mensagem +=
+"🏦 Bandeira: " +
+bandeira +
+"%0A";
+
+}
+
+mensagem += "%0A📦 *PEDIDO*%0A";
+
+carrinho.forEach(item => {
+
+total += item.preco;
+
+mensagem +=
+
+"• " +
+item.nome +
+
+" x" +
+item.quantidade +
+
+" - R$ " +
+item.preco.toFixed(2)
+
++ "%0A";
+
+if(item.adicionais.length){
+
+mensagem +=
+"Adicionais: "
++
+item.adicionais.join(", ")
++
+"%0A";
+
+}
+
+if(item.observacao){
+
+mensagem +=
+"Obs: "
++
+item.observacao
++
+"%0A";
+
+}
+
+mensagem += "%0A";
+
+});
+
+if(desconto > 0){
+
+mensagem +=
+"🎟 Cupom: PRADO10%0A";
+
+total =
+total -
+(total * desconto / 100);
+
+}
+
+mensagem +=
+"%0A💰 *TOTAL: R$ "
++
+total.toFixed(2)
++
+"*";
+
+window.open(
+"https://wa.me/5511975342595?text="
++
+mensagem,
+"_blank"
+);
+
+}
+
+// =========================
 // INICIAR
+// =========================
 
 carregarProdutos(produtos);
