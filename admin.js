@@ -5,7 +5,7 @@ let produtos =
 JSON.parse(
 localStorage.getItem("produtos")
 ) || [];
-
+let produtoEditando = null;
 // LOGIN
 
 function login(){
@@ -150,7 +150,18 @@ ${produto.destaque
 : "—"}
 
 </p>
+<div class="acoes-produto">
+
 <button
+class="btn-editar"
+onclick="editarProduto(${produto.id})">
+
+Editar
+
+</button>
+
+<button
+class="btn-excluir"
 onclick="excluirProduto(${produto.id})">
 
 Excluir
@@ -159,8 +170,52 @@ Excluir
 
 </div>
 
+</div>
+
 `;
 
+});
+
+}
+//EDITAR
+function editarProduto(id){
+
+const produto =
+produtos.find(
+produto =>
+produto.id === id
+);
+
+produtoEditando = id;
+
+document.getElementById("nome").value =
+produto.nome;
+
+document.getElementById("categoria").value =
+produto.categoria;
+
+document.getElementById("preco").value =
+produto.preco;
+
+document.getElementById("descricao").value =
+produto.descricao;
+
+document.getElementById("imagem").value =
+produto.imagem;
+
+document.getElementById("destaque").checked =
+produto.destaque || false;
+
+if(document.getElementById("promocao")){
+
+document.getElementById("promocao").checked =
+produto.promocao || false;
+
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
 });
 
 }
