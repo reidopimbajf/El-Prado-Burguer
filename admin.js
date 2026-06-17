@@ -32,7 +32,9 @@ listarProdutos();
 }
 else{
 
-alert("Usuário ou senha inválidos.");
+alert(
+"Usuário ou senha inválidos."
+);
 
 }
 
@@ -46,30 +48,53 @@ location.reload();
 
 }
 
-// SALVAR
+// CADASTRAR
 
 function salvarProduto(){
+
+const nome =
+document.getElementById("nome").value;
+
+const categoria =
+document.getElementById("categoria").value;
+
+const preco =
+document.getElementById("preco").value;
+
+const descricao =
+document.getElementById("descricao").value;
+
+const imagem =
+document.getElementById("imagem").value;
+
+if(
+!nome ||
+!preco ||
+!descricao ||
+!imagem
+){
+
+alert(
+"Preencha todos os campos."
+);
+
+return;
+
+}
 
 const produto = {
 
 id: Date.now(),
 
-nome:
-document.getElementById("nome").value,
+nome,
 
-categoria:
-document.getElementById("categoria").value,
+categoria,
 
-preco:
-Number(
-document.getElementById("preco").value
-),
+preco:Number(preco),
 
-descricao:
-document.getElementById("descricao").value,
+descricao,
 
-imagem:
-document.getElementById("imagem").value
+imagem
 
 };
 
@@ -80,9 +105,13 @@ localStorage.setItem(
 JSON.stringify(produtos)
 );
 
+listarProdutos();
+
 limparFormulario();
 
-listarProdutos();
+alert(
+"Produto cadastrado!"
+);
 
 }
 
@@ -101,11 +130,13 @@ lista.innerHTML += `
 
 <div class="produto-admin">
 
-<h3>${produto.nome}</h3>
+<img src="${produto.imagem}">
+
+<h4>${produto.nome}</h4>
 
 <p>${produto.descricao}</p>
 
-<p>
+<p class="preco">
 R$ ${produto.preco.toFixed(2)}
 </p>
 
@@ -127,6 +158,16 @@ Excluir
 // EXCLUIR
 
 function excluirProduto(id){
+
+if(
+!confirm(
+"Deseja excluir este produto?"
+)
+){
+
+return;
+
+}
 
 produtos =
 produtos.filter(
