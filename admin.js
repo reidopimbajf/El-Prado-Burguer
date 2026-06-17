@@ -289,7 +289,13 @@ JSON.stringify(produtos)
 );
 
 listarProdutos();
+carregarPedidos();
 
+atualizarDashboard();
+
+mostrarSecao(
+"dashboard"
+);
 }
 
 // LIMPAR
@@ -324,5 +330,165 @@ item.style.display = "none";
 document
 .getElementById(secao)
 .style.display = "block";
+
+}
+function carregarPedidos(){
+
+const lista =
+document.getElementById(
+"listaPedidos"
+);
+
+if(!lista) return;
+
+const pedidos =
+JSON.parse(
+localStorage.getItem("pedidos")
+) || [];
+
+if(pedidos.length === 0){
+
+lista.innerHTML = `
+<p>Nenhum pedido recebido.</p>
+`;
+
+return;
+
+}
+
+lista.innerHTML = "";
+
+pedidos.reverse().forEach(pedido => {
+
+lista.innerHTML += `
+
+<div class="pedido-card">
+
+<h3>
+Pedido #${pedido.id}
+</h3>
+
+<p>
+👤 ${pedido.cliente}
+</p>
+
+<p>
+📱 ${pedido.telefone}
+</p>
+
+<p>
+💰 R$ ${pedido.total.toFixed(2)}
+</p>
+
+<p>
+📌 ${pedido.status}
+</p>
+
+<button
+onclick="alterarStatus(${pedido.id})">
+
+Alterar Status
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+function alterarStatus(id){
+
+let pedidos =
+JSON.parse(
+localStorage.getItem("pedidos")
+) || [];
+
+const pedido =
+pedidos.find(
+pedido =>
+pedido.id === id
+);
+
+if(!pedido) return;
+
+if(
+pedido.status ===
+"Novo Pedido"
+){
+
+pedido.status =
+"Em Preparo";
+
+}
+else if(
+pedido.status ===
+"Em Preparo"
+){
+
+pedido.status =
+"Saiu para Entrega";
+
+}
+else if(
+pedido.status ===
+"Saiu para Entrega"
+){
+
+pedido.status =
+"Entregue";
+
+}
+
+localStorage.setItem(
+"pedidos",
+JSON.stringify(pedidos)
+);
+
+carregarPedidos();
+
+atualizarDashboard();
+
+}
+function atualizarDashboard(){
+
+const pedidos =
+JSON.parse(
+localStorage.getItem("pedidos")
+) || [];
+
+let faturamento = 0;
+
+pedidos.forEach(pedido => {
+
+faturamento += pedido.total;
+
+});
+
+const totalPedidos =
+document.getElementById(
+"totalPedidos"
+);
+
+const faturamentoEl =
+document.getElementById(
+"faturamento"
+);
+
+if(totalPedidos){
+
+totalPedidos.innerText =
+pedidos.length;
+
+}
+
+if(faturamentoEl){
+
+faturamentoEl.innerText =
+"R$ " +
+faturamento.toFixed(2);
+
+}
 
 }
