@@ -1,8 +1,11 @@
-// =========================
+// =============================
 // PRODUTOS
-// =========================
+// =============================
 
-const produtos = [
+let produtos =
+JSON.parse(
+localStorage.getItem("produtos")
+) || [
 
 {
 id:1,
@@ -38,43 +41,22 @@ categoria:"combo",
 descricao:"2 Burgers + 2 Batatas + 2 Refrigerantes",
 preco:89.90,
 imagem:"https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800"
-},
-
-{
-id:5,
-nome:"Batata Especial",
-categoria:"porcao",
-descricao:"Batata Crocante",
-preco:19.90,
-imagem:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"
-},
-
-{
-id:6,
-nome:"Coca-Cola Lata",
-categoria:"bebida",
-descricao:"350ml",
-preco:6.00,
-imagem:"https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=800"
 }
 
 ];
 
-// =========================
+// =============================
 // VARIÁVEIS
-// =========================
+// =============================
 
 let carrinho = [];
-
 let produtoSelecionado = null;
-
 let quantidade = 1;
-
 let desconto = 0;
 
-// =========================
+// =============================
 // CARREGAR PRODUTOS
-// =========================
+// =============================
 
 function carregarProdutos(lista){
 
@@ -82,6 +64,30 @@ const container =
 document.getElementById("produtos");
 
 container.innerHTML = "";
+
+if(lista.length === 0){
+
+container.innerHTML = `
+<div style="
+text-align:center;
+padding:50px;
+grid-column:1/-1;
+">
+
+<h2>
+Nenhum produto cadastrado
+</h2>
+
+<p>
+Cadastre produtos no painel Admin.
+</p>
+
+</div>
+`;
+
+return;
+
+}
 
 lista.forEach(produto => {
 
@@ -101,8 +107,11 @@ container.innerHTML += `
 R$ ${produto.preco.toFixed(2)}
 </span>
 
-<button onclick="abrirProduto(${produto.id})">
+<button
+onclick="abrirProduto(${produto.id})">
+
 Adicionar
+
 </button>
 
 </div>
@@ -115,61 +124,75 @@ Adicionar
 
 }
 
-// =========================
-// FILTRO
-// =========================
+// =============================
+// FILTROS
+// =============================
 
 function filtrar(categoria){
 
 if(categoria === "todos"){
 
 carregarProdutos(produtos);
+
 return;
 
 }
 
 const filtrados =
 produtos.filter(
-produto => produto.categoria === categoria
+produto =>
+produto.categoria === categoria
 );
 
 carregarProdutos(filtrados);
 
 }
 
-// =========================
+// =============================
 // ABRIR PRODUTO
-// =========================
+// =============================
 
 function abrirProduto(id){
 
 produtoSelecionado =
 produtos.find(
-produto => produto.id === id
+produto =>
+produto.id === id
 );
 
 quantidade = 1;
 
-document.getElementById("produtoNome").innerText =
+document.getElementById(
+"produtoNome"
+).innerText =
 produtoSelecionado.nome;
 
-document.getElementById("produtoDescricao").innerText =
+document.getElementById(
+"produtoDescricao"
+).innerText =
 produtoSelecionado.descricao;
 
-document.getElementById("produtoPreco").innerText =
-"R$ " + produtoSelecionado.preco.toFixed(2);
+document.getElementById(
+"produtoPreco"
+).innerText =
+"R$ " +
+produtoSelecionado.preco.toFixed(2);
 
-document.getElementById("qtd").innerText =
+document.getElementById(
+"qtd"
+).innerText =
 quantidade;
 
-document.getElementById("modalProduto")
-.style.display = "flex";
+document.getElementById(
+"modalProduto"
+).style.display =
+"flex";
 
 }
 
-// =========================
+// =============================
 // QUANTIDADE
-// =========================
+// =============================
 
 function alterarQtd(valor){
 
@@ -181,19 +204,20 @@ quantidade = 1;
 
 }
 
-document.getElementById("qtd").innerText =
+document.getElementById(
+"qtd"
+).innerText =
 quantidade;
 
 }
 
-// =========================
-// ADICIONAR AO CARRINHO
-// =========================
+// =============================
+// ADICIONAR CARRINHO
+// =============================
 
 function adicionarCarrinho(){
 
 let adicionais = [];
-
 let valorExtra = 0;
 
 document
@@ -204,47 +228,60 @@ document
 
 adicionais.push(item.value);
 
-valorExtra += Number(item.dataset.preco);
+valorExtra += Number(
+item.dataset.preco
+);
 
 });
 
 const observacao =
-document.getElementById("observacao").value;
+document.getElementById(
+"observacao"
+).value;
 
 carrinho.push({
 
-nome: produtoSelecionado.nome,
+nome:
+produtoSelecionado.nome,
 
-quantidade: quantidade,
+quantidade,
 
-adicionais: adicionais,
+adicionais,
 
-observacao: observacao,
+observacao,
 
 preco:
-(produtoSelecionado.preco + valorExtra)
-* quantidade
+(
+produtoSelecionado.preco +
+valorExtra
+) * quantidade
 
 });
 
-document.getElementById("modalProduto")
-.style.display = "none";
+document
+.getElementById("modalProduto")
+.style.display =
+"none";
 
 document
 .querySelectorAll(
 "#modalProduto input[type='checkbox']"
 )
-.forEach(item => item.checked = false);
+.forEach(item =>
+item.checked = false
+);
 
-document.getElementById("observacao").value = "";
+document.getElementById(
+"observacao"
+).value = "";
 
 atualizarCarrinho();
 
 }
 
-// =========================
+// =============================
 // REMOVER ITEM
-// =========================
+// =============================
 
 function removerItem(index){
 
@@ -254,20 +291,23 @@ atualizarCarrinho();
 
 }
 
-// =========================
+// =============================
 // ATUALIZAR CARRINHO
-// =========================
+// =============================
 
 function atualizarCarrinho(){
 
 const lista =
-document.getElementById("itensCarrinho");
+document.getElementById(
+"itensCarrinho"
+);
 
 lista.innerHTML = "";
 
 let total = 0;
 
-carrinho.forEach((item,index)=>{
+carrinho.forEach(
+(item,index) => {
 
 total += item.preco;
 
@@ -296,17 +336,7 @@ R$ ${item.preco.toFixed(2)}
 </div>
 
 <button
-onclick="removerItem(${index})"
-style="
-margin-top:10px;
-width:100%;
-padding:10px;
-background:#ff4444;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-">
+onclick="removerItem(${index})">
 
 Remover
 
@@ -318,17 +348,22 @@ Remover
 
 });
 
-document.getElementById("contador").innerText =
+document.getElementById(
+"contador"
+).innerText =
 carrinho.length;
 
-document.getElementById("total").innerText =
-"Total: R$ " + total.toFixed(2);
+document.getElementById(
+"total"
+).innerText =
+"Total: R$ " +
+total.toFixed(2);
 
 }
 
-// =========================
+// =============================
 // CARRINHO
-// =========================
+// =============================
 
 function abrirCarrinho(){
 
@@ -346,14 +381,15 @@ document
 
 }
 
-// =========================
+// =============================
 // CUPOM
-// =========================
+// =============================
 
 function aplicarCupom(){
 
 const cupom =
-document.getElementById("cupom")
+document
+.getElementById("cupom")
 .value
 .toUpperCase();
 
@@ -361,22 +397,36 @@ if(cupom === "PRADO10"){
 
 desconto = 10;
 
-alert("Cupom aplicado!");
+alert(
+"🎉 Cupom aplicado!"
+);
 
 }
 else{
 
-alert("Cupom inválido.");
+alert(
+"Cupom inválido."
+);
 
 }
 
 }
 
-// =========================
+// =============================
 // CHECKOUT
-// =========================
+// =============================
 
 function abrirCheckout(){
+
+if(carrinho.length === 0){
+
+alert(
+"Seu carrinho está vazio."
+);
+
+return;
+
+}
 
 let total = 0;
 
@@ -394,18 +444,22 @@ total -
 
 }
 
-document.getElementById("resumoTotal")
-.innerText =
-"Total: R$ " + total.toFixed(2);
+document.getElementById(
+"resumoTotal"
+).innerText =
+"Total: R$ " +
+total.toFixed(2);
 
-document.getElementById("checkout")
-.style.display = "flex";
+document.getElementById(
+"checkout"
+).style.display =
+"flex";
 
 }
 
-// =========================
+// =============================
 // WHATSAPP
-// =========================
+// =============================
 
 function enviarWhatsApp(){
 
@@ -465,7 +519,8 @@ bandeira +
 
 }
 
-mensagem += "%0A📦 *PEDIDO*%0A";
+mensagem +=
+"%0A📦 *PEDIDO*%0A";
 
 carrinho.forEach(item => {
 
@@ -480,17 +535,15 @@ item.nome +
 item.quantidade +
 
 " - R$ " +
-item.preco.toFixed(2)
+item.preco.toFixed(2) +
 
-+ "%0A";
+"%0A";
 
 if(item.adicionais.length){
 
 mensagem +=
-"Adicionais: "
-+
-item.adicionais.join(", ")
-+
+"Adicionais: " +
+item.adicionais.join(", ") +
 "%0A";
 
 }
@@ -498,10 +551,8 @@ item.adicionais.join(", ")
 if(item.observacao){
 
 mensagem +=
-"Obs: "
-+
-item.observacao
-+
+"Obs: " +
+item.observacao +
 "%0A";
 
 }
@@ -522,23 +573,36 @@ total -
 }
 
 mensagem +=
-"%0A💰 *TOTAL: R$ "
-+
-total.toFixed(2)
-+
+
+"%0A💰 *TOTAL: R$ " +
+total.toFixed(2) +
 "*";
 
 window.open(
-"https://wa.me/5511975342595?text="
-+
+"https://wa.me/5511975342595?text=" +
 mensagem,
 "_blank"
 );
 
 }
 
-// =========================
+// =============================
 // INICIAR
-// =========================
+// =============================
 
 carregarProdutos(produtos);
+
+// Atualiza se houver mudança
+window.addEventListener(
+"storage",
+() => {
+
+produtos =
+JSON.parse(
+localStorage.getItem("produtos")
+) || [];
+
+carregarProdutos(produtos);
+
+}
+);
